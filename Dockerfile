@@ -8,7 +8,7 @@ RUN chmod +x /usr/local/bin/* && \
     su -c "echo 'deb http://ppa.launchpad.net/git-core/ppa/ubuntu trusty main' > /etc/apt/sources.list.d/git.list" && \
     apt-get update && \
     apt-get install -y --no-install-recommends libdb-dev libsodium-dev zlib1g-dev libtinfo-dev curl unzip ca-certificates && \
-    curl -L -o master.zip http://github.com/jjcollinge/quorum-examples/zipball/jjcollinge/singleton/ && \
+    curl -L -o master.zip https://github.com/jjcollinge/quorum-setup/zipball/jjcollinge/singleton/ && \
     unzip master.zip -d examples && \
     rm master.zip && \
     apt-get remove -y curl unzip && \
