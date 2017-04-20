@@ -3,19 +3,19 @@
 UNIQUE_ID=$(date +%s)
 LOG="run-${UNIQUE_ID}.log"
 
-if [ ! -v "PATH_TO_NODE" ];
+if [ ! -v "NODE_CONFIG_PATH" ];
 then
-        echo "PATH_TO_NODE not set, please provide a valid node config">>${LOG}
+        echo "NODE_CONFIG_PATH not set, please provide a valid node config">>${LOG}
         exit 1;
-elif [ ! -d "${PATH_TO_NODE}" ];
+elif [ ! -d "${NODE_CONFIG_PATH}" ];
 then
-        echo "PATH_TO_NODE set, but ${PATH_TO_NODE} directory doesn't exist">>${LOG}
+        echo "NODE_CONFIG_PATH set, but ${NODE_CONFIG_PATH} directory doesn't exist">>${LOG}
         exit 1;
 else
-        echo "Copying node-config from ${PATH_TO_NODE} to local directory">>${LOG}
+        echo "Copying node-config from ${NODE_CONFIG_PATH} to local directory">>${LOG}
         rm -rf node-config
         mkdir -p node-config
-        cp -rp $PATH_TO_NODE/* node-config
+        cp -rp $NODE_CONFIG_PATH/* node-config
 fi
 
 if [ ! -f "./target/bootnode" ] &&
