@@ -15,7 +15,7 @@ else
         echo "Copying node-config from ${PATH_TO_NODE} to local directory">>${LOG}
         rm -rf node-config
         mkdir -p node-config
-        cp $PATH_TO_NODE/* node-config
+        cp -rp $PATH_TO_NODE/* node-config
 fi
 
 if [ ! -f "./target/bootnode" ] &&
