@@ -37,3 +37,4 @@ curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/exa
 curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/tm${INDEX}.conf" -O
 mv "tm${INDEX}.conf" node.conf
 sed -i -e "s/tm${INDEX}/node/g" node.conf
+sed -i -e "s/127.0.0.1/0.0.0.0/g" node.conf

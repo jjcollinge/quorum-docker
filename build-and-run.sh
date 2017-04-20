@@ -43,7 +43,7 @@ SERVICE_IMAGE_ID="service${UNIQUE_ID}"
 SERVICE_CONTAINER_ID="${SERVICE_IMAGE_ID}-container"
 echo "Build image ${SERVICE_IMAGE_ID}">>${LOG}
 docker build --no-cache -t $SERVICE_IMAGE_ID -f Dockerfile .
-ARGS="--rm -it -e BOOTNODE_ADDRESS=${BOOTNODE_ADDRESS} -p 33445:33445 -p 8545:8545 -p 30303:30303 -p 9000:9000 ${SERVICE_IMAGE_ID}"
+ARGS="--name $SERVICE_CONTAINER_ID --rm -it -e BOOTNODE_ADDRESS=${BOOTNODE_ADDRESS} --net=host ${SERVICE_IMAGE_ID}"
 echo "Creating container ${SERVICE_CONTAINER_ID}">>${LOG}
 echo "Args: ${ARGS}">>${LOG}
-docker run --name $SERVICE_CONTAINER_ID $ARGS
+docker run $ARGS
