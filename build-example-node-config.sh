@@ -7,9 +7,9 @@ do
         esac
 done
 
-if [ $INDEX -eq "" ];
+if [ -z "$INDEX" ];
 then
-    $INDEX = 1
+    INDEX=1
 fi
 
 mkdir -p example-config
