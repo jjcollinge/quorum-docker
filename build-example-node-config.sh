@@ -21,6 +21,9 @@ mv tm1a.key keys/nodea.key
 curl https://github.com/jpmorganchase/quorum-examples/blob/master/examples/7nodes/keys/tm1a.pub -O
 mv tm1a.pub keys/nodea.pub
 
+curl https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/key1 -O
+mv key1 keys/key1
+
 # Get example conf
 curl https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/tm1.conf -O
 mv tm1.conf node.conf
