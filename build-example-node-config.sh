@@ -1,4 +1,16 @@
 #!/bin/bash
+while getopts n: option
+do
+        case "${option}"
+        in
+                n) INDEX=${OPTARG};;
+        esac
+done
+
+if [ $INDEX -eq "" ];
+then
+    $INDEX = 1
+fi
 
 mkdir -p example-config
 cd example-config
@@ -6,24 +18,22 @@ cd example-config
 # Get example genesis file
 curl -O https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/genesis.json
 
-mkdir -p keys
-
 # Get example key files
-curl https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/tm1.key -O
-mv tm1.key node.key
+curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/tm${INDEX}.key" -O
+mv "tm${INDEX}.key" node.key
 
-curl https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/tm1.pub -O
-mv tm1.pub node.pub
+curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/tm${INDEX}.pub" -O
+mv "tm${INDEX}.pub" node.pub
 
-curl https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/tm1a.key -O
-mv tm1a.key nodea.key
+curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/tm${INDEX}a.key" -O
+mv "tm${INDEX}a.key" nodea.key
 
-curl https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/tm1a.pub -O
-mv tm1a.pub nodea.pub
+curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/tm${INDEX}a.pub" -O
+mv "tm${INDEX}a.pub" nodea.pub
 
-curl https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/key1 -O
+curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/key${INDEX}" -O
 
 # Get example conf
-curl https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/tm1.conf -O
-mv tm1.conf node.conf
-sed -i -e s/tm1/node/g node.conf
+curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/tm${INDEX}.conf" -O
+mv "tm${INDEX}.conf" node.conf
+sed -i -e "s/tm${INDEX}/node/g" node.conf
