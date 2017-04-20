@@ -12,7 +12,7 @@ then
         echo "PATH_TO_NODE set, but ${PATH_TO_NODE} directory doesn't exist">>${LOG}
         exit 1;
 else
-        echo "Copying node-config from ${PATH_TO_NODE} to local directory"
+        echo "Copying node-config from ${PATH_TO_NODE} to local directory">>${LOG}
         rm -rf node-config
         mkdir -p node-config
         cp $PATH_TO_NODE/* node-config
@@ -43,7 +43,7 @@ SERVICE_IMAGE_ID="service${UNIQUE_ID}"
 SERVICE_CONTAINER_ID="${SERVICE_IMAGE_ID}-container"
 echo "Build image ${SERVICE_IMAGE_ID}">>${LOG}
 docker build --no-cache -t $SERVICE_IMAGE_ID -f Dockerfile .
-ARGS="--rm -it -e BOOTNODE_ADDRESS=${BOOTNODE_ADDRESS} -e PATH_TO_NODE=${PATH_TO_NODE} -p 33445:33445 -p 8545:8545 -p 30303:30303 -p 9000:9000 ${SERVICE_IMAGE_ID}"
+ARGS="--rm -it -e BOOTNODE_ADDRESS=${BOOTNODE_ADDRESS} -p 33445:33445 -p 8545:8545 -p 30303:30303 -p 9000:9000 ${SERVICE_IMAGE_ID}"
 echo "Creating container ${SERVICE_CONTAINER_ID}">>${LOG}
 echo "Args: ${ARGS}">>${LOG}
 docker run --name $SERVICE_CONTAINER_ID $ARGS
