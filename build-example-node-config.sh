@@ -39,11 +39,4 @@ curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/exa
 curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/tm${INDEX}.conf" -O
 mv "tm${INDEX}.conf" node.conf
 sed -i -e "s/tm${INDEX}/node/g" node.conf
-EXAMPLE_PORT_EXT=$((INDEX - 1))
-sed -i -e "s/127.0.0.1:900${EXAMPLE_PORT_EXT}/0.0.0.0:9000/g" node.conf
-
-# Add existing node if one has been provided
-if [ -n "$EXISTING_NODE" ];
-then
-    sed -i -e "s/127.0.0.1:9000/${EXISTING_NODE}:9000/g" node.conf
-fi
+sed -i -e "s/127.0.0.1/0.0.0.0/g" node.conf
