@@ -12,10 +12,10 @@ then
         echo "PATH_TO_NODE set, but ${PATH_TO_NODE} directory doesn't exist">>${LOG}
         exit 1;
 else
-        echo "Copying node-config to local directory"
+        echo "Copying node-config from ${PATH_TO_NODE} to local directory"
         rm -rf node-config
         mkdir -p node-config
-        cp $PATH_TO_NODE node-config
+        cp $PATH_TO_NODE/* node-config
 fi
 
 if [ ! -f "./target/bootnode" ] &&
