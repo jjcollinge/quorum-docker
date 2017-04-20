@@ -10,7 +10,7 @@ RUN chmod +x /usr/local/bin/* && \
     apt-get install -y --no-install-recommends libdb-dev libsodium-dev zlib1g-dev libtinfo-dev curl unzip ca-certificates && \
     curl -L -o master.zip https://github.com/jjcollinge/quorum-setup/zipball/jjcollinge/singleton/ && \
     unzip master.zip -d node && \
-    cd node/* && mv * /node/
+    cd node/* && mv * /node/ && \
     rm master.zip && \
     apt-get remove -y curl unzip && \
     rm -rf /var/lib/apt/lists/*
