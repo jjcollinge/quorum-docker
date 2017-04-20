@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p node-config
-cd node-config
+mkdir -p example-config
+cd example-config
 
 # Get example genesis file
 curl -O https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/genesis.json
