@@ -1,6 +1,6 @@
 FROM ubuntu:xenial
 
-COPY ./node-config /node-config
+COPY ./node-config/* /node-config/
 COPY ./target/* /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/* && \
