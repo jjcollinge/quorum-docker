@@ -1,14 +1,16 @@
 #!/bin/bash
-while getopts n: option
+while getopts n:a: option
 do
         case "${option}"
         in
                 n) INDEX=${OPTARG};;
+                a) EXISTING_NODE=${OPTARG};;
         esac
 done
 
 if [ -z "$INDEX" ];
 then
+    echo "No index given, defaulting to 1"
     INDEX=1
 fi
 
@@ -37,4 +39,10 @@ curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/exa
 curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/tm${INDEX}.conf" -O
 mv "tm${INDEX}.conf" node.conf
 sed -i -e "s/tm${INDEX}/node/g" node.conf
-sed -i -e "s/127.0.0.1/0.0.0.0/g" node.conf
+sed -i -e "s/127.0.0.1:900${INDEX}/0.0.0.0:9000/g" node.conf
+
+# Add existing node if one has been provided
+if [ -n "$EXISTING_NODE" ];
+then
+    sed -i -e "s/127.0.0.1:9000/${EXISTING_NODE}:9000/g" node.conf
+fi
