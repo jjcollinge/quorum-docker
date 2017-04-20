@@ -10,19 +10,18 @@ mkdir -p keys
 
 # Get example key files
 curl https://github.com/jpmorganchase/quorum-examples/blob/master/examples/7nodes/keys/tm1.key -O
-mv tm1.key keys/node.key
+mv tm1.key node.key
 
 curl https://github.com/jpmorganchase/quorum-examples/blob/master/examples/7nodes/keys/tm1.pub -O
-mv tm1.pub keys/node.pub
+mv tm1.pub node.pub
 
 curl https://github.com/jpmorganchase/quorum-examples/blob/master/examples/7nodes/keys/tm1a.key -O
-mv tm1a.key keys/nodea.key
+mv tm1a.key nodea.key
 
 curl https://github.com/jpmorganchase/quorum-examples/blob/master/examples/7nodes/keys/tm1a.pub -O
-mv tm1a.pub keys/nodea.pub
+mv tm1a.pub nodea.pub
 
 curl https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/key1 -O
-mv key1 keys/key1
 
 # Get example conf
 curl https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/tm1.conf -O
