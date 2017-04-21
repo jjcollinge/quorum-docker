@@ -16,7 +16,7 @@ else
         rm -rf node-config
         mkdir -p node-config
         cp -rp $NODE_CONFIG_PATH/* node-config
-        echo "GETH_ARGS=$GETH_ARGS" > node-config/geth-args
+        echo "GETH_ARGS=\"$GETH_ARGS\"" > node-config/geth-args
 fi
 
 if [ ! -f "./target/bootnode" ] &&
