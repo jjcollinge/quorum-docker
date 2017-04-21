@@ -14,7 +14,7 @@ RUN chmod +x /usr/local/bin/* && \
     rm master.zip && \
     apt-get remove -y curl unzip && \
     rm -rf /var/lib/apt/lists/* && \
-    chmod +x /node/init.sh /node/start.sh /node/stop.sh
+    chmod +x /node/init.sh /node/start.sh /node/stop.sh /node/run.sh
 
 WORKDIR /node
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/node/run.sh"]
