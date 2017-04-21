@@ -13,6 +13,8 @@ RUN chmod +x /usr/local/bin/* && \
     cd node/* && mv * /node/ && cd / && \
     rm master.zip && \
     apt-get remove -y curl unzip && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    chmod +x /node/init.sh /node/start.sh /node/stop.sh
 
+WORKDIR /node
 ENTRYPOINT ["/bin/bash"]
