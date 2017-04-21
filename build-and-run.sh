@@ -41,9 +41,9 @@ fi
 
 SERVICE_IMAGE_ID="service${UNIQUE_ID}"
 SERVICE_CONTAINER_ID="${SERVICE_IMAGE_ID}-container"
-echo "Build image ${SERVICE_IMAGE_ID}">>${LOG}
+echo "Building image ${SERVICE_IMAGE_ID}">>${LOG}
 docker build -t $SERVICE_IMAGE_ID -f Dockerfile .
-. env.sh
+. ./env.sh
 ARGS="--name $SERVICE_CONTAINER_ID --rm -d -e BOOTNODE_IP=${BOOTNODE_IP} -e BOOTNODE_PORT=${BOOTNODE_PORT} -e RPC_PORT=${RPC_PORT} -e CONSTELLATION_PORT=${CONSTELLATION_PORT} -e GETH_PORT=${GETH_PORT} --net=host ${SERVICE_IMAGE_ID}"
 echo "Creating container ${SERVICE_CONTAINER_ID}">>${LOG}
 echo "Args: ${ARGS}">>${LOG}
