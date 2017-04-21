@@ -33,7 +33,9 @@ mv "tm${INDEX}a.key" nodea.key
 curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/tm${INDEX}a.pub" -O
 mv "tm${INDEX}a.pub" nodea.pub
 
-curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/key${INDEX}" -O
+if [ "$INDEX" -lt 6 ]; then
+        curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/keys/key${INDEX}" -O
+fi
 
 # Get example conf
 curl "https://raw.githubusercontent.com/jpmorganchase/quorum-examples/master/examples/7nodes/tm${INDEX}.conf" -O
