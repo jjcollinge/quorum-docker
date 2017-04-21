@@ -16,6 +16,7 @@ else
         rm -rf node-config
         mkdir -p node-config
         cp -rp $NODE_CONFIG_PATH/* node-config
+        echo "GETH_ARGS=$GETH_ARGS" > node-config/geth-args
 fi
 
 if [ ! -f "./target/bootnode" ] &&
@@ -49,7 +50,7 @@ docker build $BUILD_ARGS
 
 . ./env.sh
 
-SERVICE_ARGS="--name $SERVICE_CONTAINER_ID --rm ${OPTIONAL_RUN_ARGS} -e BOOTNODE_IP=${BOOTNODE_IP} -e BOOTNODE_PORT=${BOOTNODE_PORT} -e RPC_PORT=${RPC_PORT} -e CONSTELLATION_PORT=${CONSTELLATION_PORT} -e GETH_PORT=${GETH_PORT} -e GETH_ARGS=\"${GETH_ARGS}\" --net=host ${SERVICE_IMAGE_ID}"
+SERVICE_ARGS="--name $SERVICE_CONTAINER_ID --rm ${OPTIONAL_RUN_ARGS} -e BOOTNODE_IP=${BOOTNODE_IP} -e BOOTNODE_PORT=${BOOTNODE_PORT} -e RPC_PORT=${RPC_PORT} -e CONSTELLATION_PORT=${CONSTELLATION_PORT} -e GETH_PORT=${GETH_PORT} --net=host ${SERVICE_IMAGE_ID}"
 echo "Running service container">>${LOG}
 echo "Service args: ${SERVICE_ARGS}">>${LOG}
 docker run $SERVICE_ARGS
