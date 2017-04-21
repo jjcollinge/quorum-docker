@@ -17,4 +17,4 @@ RUN chmod +x /usr/local/bin/* && \
     chmod +x /node/init.sh /node/start.sh /node/stop.sh /node/run.sh
 
 WORKDIR /node
-ENTRYPOINT ["run.sh"]
+ENTRYPOINT ["./run.sh"]
